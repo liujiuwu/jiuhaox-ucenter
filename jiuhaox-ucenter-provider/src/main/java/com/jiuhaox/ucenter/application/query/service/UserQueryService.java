@@ -1,7 +1,7 @@
 package com.jiuhaox.ucenter.application.query.service;
 
+import com.jiuhaox.boot.model.resp.PageResp;
 import com.jiuhaox.ddd.domain.concepts.QueryService;
-import com.jiuhaox.foundation.model.resp.PageResp;
 import com.jiuhaox.ucenter.adapter.outbound.repository.UserPORepository;
 import com.jiuhaox.ucenter.adapter.outbound.repository.model.UserPO;
 import com.jiuhaox.ucenter.application.query.model.UserQuery;

@@ -1,9 +1,9 @@
 package com.jiuhaox.ucenter.adapter.inbound.rest.api;
 
-import com.jiuhaox.foundation.model.resp.PageResp;
-import com.jiuhaox.foundation.model.resp.Resp;
-import com.jiuhaox.ucenter.application.command.model.CreateUserCmd;
-import com.jiuhaox.ucenter.application.command.model.DeleteUserCmd;
+import com.jiuhaox.boot.model.resp.PageResp;
+import com.jiuhaox.boot.model.resp.Resp;
+import com.jiuhaox.ucenter.application.command.ability.user.cmd.CreateUserAbilityCmd;
+import com.jiuhaox.ucenter.application.command.ability.user.cmd.UpdateUserAbilityCmd;
 import com.jiuhaox.ucenter.application.command.service.UserService;
 import com.jiuhaox.ucenter.application.query.model.UserQuery;
 import com.jiuhaox.ucenter.application.query.model.resp.UserDTO;
@@ -23,15 +23,20 @@ public class UserApi {
     private final UserQueryService userQueryService;
 
     @PostMapping
-    Resp create(@Valid @RequestBody CreateUserCmd cmd) {
-        userService.createUser(cmd);
+    Resp create(@Valid @RequestBody CreateUserAbilityCmd cmd) {
+        userService.create(cmd);
         return Resp.ok();
     }
 
-    @DeleteMapping
-    Resp delete(@Valid DeleteUserCmd cmd) {
-        log.info("{}", cmd);
-        userService.delete(cmd);
+    @PutMapping
+    Resp update(@Valid @RequestBody UpdateUserAbilityCmd cmd) {
+        userService.update(cmd);
+        return Resp.ok();
+    }
+
+    @DeleteMapping("/{id}")
+    Resp delete(@PathVariable("id") String id) {
+        userService.deleteById(id);
         return Resp.ok();
     }
 

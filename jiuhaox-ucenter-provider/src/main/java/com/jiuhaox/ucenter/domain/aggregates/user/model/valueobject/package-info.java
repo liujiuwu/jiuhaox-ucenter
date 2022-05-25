@@ -1,0 +1,1 @@
+package com.jiuhaox.ucenter.domain.aggregates.user.model.valueobject;

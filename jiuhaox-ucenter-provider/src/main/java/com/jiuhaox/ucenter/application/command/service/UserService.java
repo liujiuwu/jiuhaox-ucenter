@@ -1,26 +1,34 @@
 package com.jiuhaox.ucenter.application.command.service;
 
-import com.jiuhaox.foundation.exceptions.AppErrorCode;
-import com.jiuhaox.ucenter.application.command.model.CreateUserCmd;
-import com.jiuhaox.ucenter.application.command.model.DeleteUserCmd;
-import com.jiuhaox.ucenter.domain.contexts.usercontext.user.model.User;
+import com.jiuhaox.ucenter.application.command.ability.user.CreateUserAbility;
+import com.jiuhaox.ucenter.application.command.ability.user.UpdateUserAbility;
+import com.jiuhaox.ucenter.application.command.ability.user.cmd.CreateUserAbilityCmd;
+import com.jiuhaox.ucenter.application.command.ability.user.cmd.UpdateUserAbilityCmd;
 import com.jiuhaox.ucenter.domain.port.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
 
-    public void createUser(CreateUserCmd cmd) {
-        User user = new User();
-        user.setName(cmd.getName());
-        userRepository.save(user);
+    private final CreateUserAbility createUserAbility;
+
+    private final UpdateUserAbility updateUserAbility;
+
+    @Transactional(rollbackFor = Exception.class)
+    public void create(final CreateUserAbilityCmd cmd) {
+        createUserAbility.executeAbility(cmd);
     }
 
-    public void delete(DeleteUserCmd cmd) {
-        userRepository.byId("dd").orElseThrow(AppErrorCode.ERR_DATA_NOT_FOUND::throwIt);
-        userRepository.delete(cmd.getId());
+    @Transactional(rollbackFor = Exception.class)
+    public void update(final UpdateUserAbilityCmd cmd) {
+        updateUserAbility.executeAbility(cmd);
+    }
+
+    public void deleteById(final String id) {
+        userRepository.delete(id);
     }
 }

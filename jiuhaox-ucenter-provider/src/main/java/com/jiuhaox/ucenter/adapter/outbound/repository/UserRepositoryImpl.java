@@ -1,13 +1,12 @@
 package com.jiuhaox.ucenter.adapter.outbound.repository;
 
+import com.jiuhaox.ucenter.adapter.outbound.repository.converter.UserDomainConverter;
 import com.jiuhaox.ucenter.adapter.outbound.repository.model.UserPO;
+import com.jiuhaox.ucenter.domain.aggregates.user.model.User;
 import com.jiuhaox.ucenter.domain.port.repository.UserRepository;
-import com.jiuhaox.ucenter.domain.contexts.usercontext.user.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.Assert;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -19,25 +18,18 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User save(final User user) {
-        Assert.notNull(user, "Entity must not be null!");
-
-        UserPO po = new UserPO();
-        po.setName(user.getName());
-        po.setCreatedAt(LocalDateTime.now());
-        userPORepository.save(po);
-
-        user.setId(po.getId());
-        return user;
+        final UserPO userPO = UserDomainConverter.INSTANCE.toPersistenceObject(user);
+        return userPORepository.save(userPO).toAggregate();
     }
 
     @Override
     public Optional<User> byId(final String id) {
-        return userPORepository.findById(id).map(UserPO::toDomain);
+        return userPORepository.findById(id).map(UserPO::toAggregate);
     }
 
     @Override
     public List<User> byIds(final Collection<String> ids) {
-        return userPORepository.findAllById(ids).stream().map(UserPO::toDomain).toList();
+        return userPORepository.findAllById(ids).stream().map(UserPO::toAggregate).toList();
     }
 
     @Override

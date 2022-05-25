@@ -1,4 +1,4 @@
-package com.jiuhaox.ucenter.domain.contexts.usercontext.user.service;
+package com.jiuhaox.ucenter.domain.aggregates.user.service;
 
 
 import com.jiuhaox.ddd.domain.concepts.DomainService;
