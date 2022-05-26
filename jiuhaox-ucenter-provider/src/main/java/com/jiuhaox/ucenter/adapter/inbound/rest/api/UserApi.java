@@ -1,7 +1,7 @@
 package com.jiuhaox.ucenter.adapter.inbound.rest.api;
 
-import com.jiuhaox.boot.model.resp.PageResp;
-import com.jiuhaox.boot.model.resp.Resp;
+import com.jiuhaox.boot.application.model.resp.PageResp;
+import com.jiuhaox.boot.application.model.resp.Resp;
 import com.jiuhaox.ucenter.application.command.ability.user.cmd.CreateUserAbilityCmd;
 import com.jiuhaox.ucenter.application.command.ability.user.cmd.UpdateUserAbilityCmd;
 import com.jiuhaox.ucenter.application.command.service.UserService;

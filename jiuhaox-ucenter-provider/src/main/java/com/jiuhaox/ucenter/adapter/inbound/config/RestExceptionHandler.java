@@ -1,7 +1,7 @@
 package com.jiuhaox.ucenter.adapter.inbound.config;
 
-import com.jiuhaox.boot.consts.CommonConst;
-import com.jiuhaox.boot.model.resp.Resp;
+import com.jiuhaox.boot.application.model.resp.Resp;
+import com.jiuhaox.boot.core.consts.CommonConst;
 import io.micrometer.core.instrument.util.StringUtils;
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.ConstraintViolation;

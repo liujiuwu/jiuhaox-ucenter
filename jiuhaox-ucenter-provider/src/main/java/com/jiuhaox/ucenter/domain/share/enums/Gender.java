@@ -1,6 +1,6 @@
 package com.jiuhaox.ucenter.domain.share.enums;
 
-import com.jiuhaox.boot.enums.EnumCodeName;
+import com.jiuhaox.boot.core.enums.EnumCodeName;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

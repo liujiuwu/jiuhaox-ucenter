@@ -1,12 +1,13 @@
 package com.jiuhaox.ucenter.adapter.outbound.repository;
 
-import com.jiuhaox.ucenter.adapter.outbound.repository.converter.UserDomainConverter;
+import com.jiuhaox.ucenter.adapter.outbound.repository.converter.UserConverter;
 import com.jiuhaox.ucenter.adapter.outbound.repository.model.UserPO;
 import com.jiuhaox.ucenter.domain.aggregates.user.model.User;
 import com.jiuhaox.ucenter.domain.port.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +19,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User save(final User user) {
-        final UserPO userPO = UserDomainConverter.INSTANCE.toPersistenceObject(user);
+        Instant now = Instant.now();
+        final UserPO userPO = UserConverter.INSTANCE.toPersistenceObject(user);
+        //TODO 自动填充
+        userPO.setCreatedAt(now).setCreatedBy("1").setUpdatedAt(now).setUpdatedBy("1");
         return userPORepository.save(userPO).toAggregate();
     }
 

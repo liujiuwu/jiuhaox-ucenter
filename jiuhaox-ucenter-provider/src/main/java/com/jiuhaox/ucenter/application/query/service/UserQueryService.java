@@ -1,6 +1,6 @@
 package com.jiuhaox.ucenter.application.query.service;
 
-import com.jiuhaox.boot.model.resp.PageResp;
+import com.jiuhaox.boot.application.model.resp.PageResp;
 import com.jiuhaox.ddd.domain.concepts.QueryService;
 import com.jiuhaox.ucenter.adapter.outbound.repository.UserPORepository;
 import com.jiuhaox.ucenter.adapter.outbound.repository.model.UserPO;
@@ -18,7 +18,9 @@ public class UserQueryService implements QueryService {
     private final UserPORepository userPORepository;
 
     public PageResp<UserDTO> findAll(UserQuery query) {
-        final Page<UserPO> page = userPORepository.findAll(Example.of(new UserPO()), PageRequest.of(query.getPage(), query.getSize()));
+        final UserPO queryPO = new UserPO();
+        final Example<UserPO> example = Example.of(queryPO);
+        final Page<UserPO> page = userPORepository.findAll(example, PageRequest.of(query.getPage(), query.getSize()));
         return PageResp.<UserDTO>builder().content(page.getContent().stream().map(UserPO::toDTO).toList()).page(query.getPage()).size(query.getSize()).total(page.getTotalElements()).build();
     }
 }

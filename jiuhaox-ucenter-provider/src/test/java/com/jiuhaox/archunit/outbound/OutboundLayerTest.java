@@ -1,7 +1,7 @@
 package com.jiuhaox.archunit.outbound;
 
+import com.jiuhaox.boot.adapter.outbound.concepts.PersistenceObject;
 import com.jiuhaox.ddd.domain.concepts.Repository;
-import com.jiuhaox.ddd.outbound.concepts.PersistenceObject;
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;

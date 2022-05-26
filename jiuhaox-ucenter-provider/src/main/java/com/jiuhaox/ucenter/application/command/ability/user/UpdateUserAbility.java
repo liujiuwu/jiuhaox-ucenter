@@ -1,7 +1,7 @@
 package com.jiuhaox.ucenter.application.command.ability.user;
 
 import com.jiuhaox.boot.application.ability.Ability;
-import com.jiuhaox.boot.model.resp.Resp;
+import com.jiuhaox.boot.application.model.resp.Resp;
 import com.jiuhaox.ucenter.application.command.ability.user.cmd.UpdateUserAbilityCmd;
 import com.jiuhaox.ucenter.domain.aggregates.user.model.User;
 import com.jiuhaox.ucenter.domain.port.repository.UserRepository;

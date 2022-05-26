@@ -6,6 +6,11 @@ spring:
   data:
     mongodb:
       uri: mongodb://root:123456@localhost:27017/ucenter?authSource=admin
+  jackson:
+    default-property-inclusion: NON_NULL
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
 logging:
   level:
     org.springframework: debug
