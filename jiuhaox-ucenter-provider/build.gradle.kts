@@ -40,4 +40,5 @@ dependencies {
     testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
     testImplementation("com.tngtech.archunit:archunit")
     testImplementation("com.tngtech.archunit:archunit-junit5")
+    testImplementation("com.jiuhaox:jiuhaox-common-test")
 }

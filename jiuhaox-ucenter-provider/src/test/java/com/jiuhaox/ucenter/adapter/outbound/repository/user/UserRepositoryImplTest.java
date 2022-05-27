@@ -3,7 +3,7 @@ package com.jiuhaox.ucenter.adapter.outbound.repository.user;
 import com.jiuhaox.ucenter.AppServerTest;
 import com.jiuhaox.ucenter.adapter.outbound.repository.UserRepositoryImpl;
 import com.jiuhaox.ucenter.domain.aggregates.user.model.User;
-import com.jiuhaox.ucenter.domain.port.repository.UserRepository;
+import com.jiuhaox.ucenter.domain.aggregates.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
